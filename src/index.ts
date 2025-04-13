@@ -54,3 +54,38 @@ export { ReportReason } from "./apis/sendReport.js";
 export { CloseReason } from "./apis/listen.js";
 export { Urgency, TextStyle } from "./apis/sendMessage.js";
 export { LoginQRCallbackEventType } from "./apis/loginQR.js";
+
+export class ZaloAPI {
+  private appId: string;
+  private appSecret: string;
+  private callbackUrl: string;
+  private accessToken?: string;
+
+  constructor(config: {
+    appId: string;
+    appSecret: string;
+    callbackUrl: string;
+  }) {
+    this.appId = config.appId;
+    this.appSecret = config.appSecret;
+    this.callbackUrl = config.callbackUrl;
+  }
+
+  async login(credentials: { username: string; password: string }) {
+    if (!credentials.username || !credentials.password) {
+      throw new Error('Missing required parameters');
+    }
+
+    // TODO: Implement actual login logic
+    throw new Error('Invalid credentials');
+  }
+
+  async getUserInfo() {
+    if (!this.accessToken) {
+      throw new Error('Missing access token');
+    }
+
+    // TODO: Implement actual user info retrieval
+    return {};
+  }
+}
